@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo list</title>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <label id="switch" class="switch" onchange="toggler_mode()">
+            <input id="switcher" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <img class="nav-logo" src="./logo.png" alt="">
+    </nav>
+    <header>   
+         <h1 class="header-title">What You Do Today ?</h1>
+    </header>
+     <ul class="todoList">
+    <section id="itemsList">
+        <li class="todoList--item" id="li0">
+            <section>  
+                <h3 class="todoList--item-title"  >im fake</h3>
+                <p class="todoList--item-summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            </section>
+            <section>
+                <button class=" todoList--item-deletebtn" onclick="deleteFake()"  ><i class=" fa fa-trash-o"   aria-hidden="true"></i></button>
+            </section>
+        </li>
+
+    </section>
+    <button class="modalCreator" id="modalCreator" onclick="modalCreator()">+</button> 
+    </ul> 
+
+    <section class="modal_bg" id="modalBg" onkeydown = "if (event.keyCode == 13) document.getElementById('saver').click()">
+        <section class="modal" id="modal"   >
+            <nav class="modal--navbar">
+                <input id="itemTitle" class="modal--navbar-title" type="text" minlength="1" maxlength="10" placeholder="Title">
+                <button class="modal--navbar-modal-closer" id="modalCloser" onclick="modalCloser()">×</button>
+            </nav>
+            <section class="modal--mainsec">
+                <textarea id="itemContent" class="modal--mainsec-content" rows="10" maxlength="100" autocomplete="address-level4"  placeholder="Im Doing Today :"></textarea>
+            </section>
+                <button class="modal-saver" id="saver" onclick="saver()">Save</button>
+        </section>
+    </section>
+    <section class="modal_bg" id="modalBgCR" onkeydown = "if (event.keyCode == 13) document.getElementById('saver').click()">
+        <section class="modal" id="modalCR"   >
+            <nav class="modal--navbar">
+                <input id="itemTitleCR" class="modal--navbar-title" type="text" minlength="1" maxlength="10" >
+                <button class="modal--navbar-modal-closer" id="modalCloserCR" onclick="modalCloserCR()">×</button>
+            </nav>
+            <section class="modal--mainsec">
+                <textarea id="itemContentCR" class="modal--mainsec-content" rows="10" maxlength="100" autocomplete="address-level4" ></textarea>
+            </section>
+                <button class="modal-saver" id="saverCR" onclick="saverCR()">Save</button>
+        </section>
+    </section>
+
+
+    <script src="./todo_list.js"></script>
+</body>
+</html>
