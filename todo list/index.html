@@ -18,7 +18,7 @@
         <img class="nav-logo" src="./logo.png" alt="">
     </nav>
     <header>   
-         <h1 class="header-title">What do You Do Today ?</h1>
+         <h1 class="header-title">What Do You Do Today ?</h1>
     </header>
      <ul class="todoList">
     <section id="itemsList">
@@ -45,7 +45,10 @@
             <section class="modal--mainsec">
                 <textarea id="itemContent" class="modal--mainsec-content" rows="10" maxlength="100" autocomplete="address-level4"  placeholder="Im Doing Today :"></textarea>
             </section>
-                <button class="modal-saver" id="saver" onclick="saver()">Save</button>
+                <footer class="modal--footer">
+                    <button class="modal--footer--modal-saver" id="saver" onclick="saver()">Save</button>
+                    <input id="itemDate" class="modal--footer--date" type="date">
+                </footer>
         </section>
     </section>
     <section class="modal_bg" id="modalBgCR" onkeydown = "if (event.keyCode == 13) document.getElementById('saver').click()">
@@ -57,7 +60,10 @@
             <section class="modal--mainsec">
                 <textarea id="itemContentCR" class="modal--mainsec-content" rows="10" maxlength="100" autocomplete="address-level4" ></textarea>
             </section>
-                <button class="modal-saver" id="saverCR" onclick="saverCR()">Save</button>
+            <footer class="modal--footer">
+                <button class="modal--footer--modal-saver" id="saverCR" onclick="saverCR()">Save</button>
+                <input id="itemDateCR" class="modal--footer--date" type="date">
+            </footer>
         </section>
     </section>
 
