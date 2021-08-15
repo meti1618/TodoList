@@ -23,24 +23,27 @@ function modalCloserCR (){
 const itemsList = document.getElementById('itemsList');
 const Itemtitle = document.getElementById('itemTitle');
 const ItemContent = document.getElementById('itemContent');
-let empty = "";
+const itemDate = document.getElementById('itemDate')
+let empty = ""  ;
 let indexOfItem = 1 ; 
 var notN = true ; 
 
 
 function saver(){
     function notnull() {
-        titleValue = Itemtitle.value.split('  ' ,);
-        contentValue = ItemContent.value.split('  ' , );
-        if(String(titleValue) ===  empty   && String(contentValue) === empty ){
+        titleValue = Itemtitle.value.replace('  ' ,)
+        contentValue = ItemContent.value.replace(' ' ,)
+
+        if(titleValue == null || titleValue == empty  && contentValue == null ||  contentValue == empty ){
             return notN = false  ;
 
         }
-    console.log(String(titleValue))
+    console.log(titleValue)
     }
-     function liCreator(title , content) {
+     function liCreator(title , content , date) {
         const li = document.createElement('li')
         const section1 = document.createElement('section')
+        const article = document.createElement('article')
         const section2 = document.createElement('section')
         const h3 = document.createElement('h3');
         const p = document.createElement('p')
@@ -48,10 +51,14 @@ function saver(){
         const btnA = document.createElement('button')
         const i = document.createElement('i')
         const i2 = document.createElement('i')
-
+        const span = document.createElement('span')
         li.classList.add('todoList--item')
         li.id =`li${indexOfItem}`;
         section1.id =`sec${indexOfItem}` 
+        article.classList.add('todoList--item--rightside')
+        article.id =`article${indexOfItem}` 
+        span.classList.add('todoList--item--rightside-date');
+        span.id =`span${indexOfItem}` 
         section2.id =`sec2${indexOfItem}` 
         h3.classList.add('todoList--item-title')
         h3.id = `h3${indexOfItem}` 
@@ -67,9 +74,12 @@ function saver(){
         i2.classList.add('fa' , 'fa-trash-o')
         h3.innerText = title ;
         p.innerText = content ; 
+        span.innerText = date ;
         document.querySelector('#itemsList').appendChild(li)
         document.querySelector(`#li${indexOfItem}`).appendChild(section1)
-        document.querySelector(`#li${indexOfItem}`).appendChild(section2)
+        document.querySelector(`#li${indexOfItem}`).appendChild(article)
+        document.querySelector(`#article${indexOfItem}`).appendChild(span)
+        document.querySelector(`#article${indexOfItem}`).appendChild(section2)
         document.querySelector(`#sec${indexOfItem}`).appendChild(h3)
         document.querySelector(`#sec${indexOfItem}`).appendChild(p)
         document.querySelector(`#sec2${indexOfItem}`).appendChild(btn)
@@ -83,8 +93,8 @@ function saver(){
 
     console.log(indexOfItem)
     notnull();
-    if(notN === true ){
-        liCreator(Itemtitle.value , ItemContent.value)
+    if(true){
+        liCreator(Itemtitle.value , ItemContent.value , itemDate.value)
         indexOfItem++
         modalCloser();
     }
@@ -98,13 +108,14 @@ function saver(){
 
 const ItemtitleCR  = document.getElementById('itemTitleCR')
 const ItemContentCR  = document.getElementById('itemContentCR')
-
+const itemDateCR =document.getElementById('itemDateCR')
 
 function liEditor(btn){
    
     numid = String(btn.id.match(/\d+/)) ;
     ItemtitleCR.value = document.getElementById(`h3${numid}`).innerText;
     ItemContentCR.value =  document.getElementById(`p${numid}`).innerText ;
+    itemDateCR.value =  document.getElementById(`span${numid}`).innerText ;
     modalCreatorCR()
 }
 function saverCR(){
@@ -119,7 +130,8 @@ function saverCR(){
     notnull()
     if(notN === true ){
         document.getElementById(`h3${numid}`).innerText = ItemtitleCR.value ;
-        document.getElementById(`p${numid}`).innerText = ItemContentCR.value
+        document.getElementById(`p${numid}`).innerText = ItemContentCR.value;
+        document.getElementById(`span${numid}`).innerText = itemDateCR.value
         indexOfItem++
         modalCloserCR();
     }
