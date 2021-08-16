@@ -26,20 +26,10 @@ const ItemContent = document.getElementById('itemContent');
 const itemDate = document.getElementById('itemDate')
 let empty = ""  ;
 let indexOfItem = 1 ; 
-var notN = true ; 
 
 
 function saver(){
-    function notnull() {
-        titleValue = Itemtitle.value.replace('  ' ,)
-        contentValue = ItemContent.value.replace(' ' ,)
 
-        if(titleValue == null || titleValue == empty  && contentValue == null ||  contentValue == empty ){
-            return notN = false  ;
-
-        }
-    console.log(titleValue)
-    }
      function liCreator(title , content , date) {
         const li = document.createElement('li')
         const section1 = document.createElement('section')
@@ -89,19 +79,13 @@ function saver(){
 
 
     }
-    console.log(notN)
 
     console.log(indexOfItem)
-    notnull();
-    if(true){
         liCreator(Itemtitle.value , ItemContent.value , itemDate.value)
         indexOfItem++
         modalCloser();
-    }
-    else {
-        Itemtitle.setAttribute('placeholder' , 'filled me' )
-        ItemContent.setAttribute('placeholder' , 'you must filled me' )
-    }
+        notifCrator(Itemtitle.value ,'saved');
+
 }
 
 
@@ -119,34 +103,41 @@ function liEditor(btn){
     modalCreatorCR()
 }
 function saverCR(){
-    function notnull() {
-        titleValueCR = ItemtitleCR.value.split('  ' ,);
-        contentValueCR = ItemContentCR.value.split('  ' , );
-        if(String(titleValueCR) ===  empty   && String(contentValueCR) === empty ){
-            return notN = false  ;
 
-        }
-    }
-    notnull()
-    if(notN === true ){
+
         document.getElementById(`h3${numid}`).innerText = ItemtitleCR.value ;
         document.getElementById(`p${numid}`).innerText = ItemContentCR.value;
         document.getElementById(`span${numid}`).innerText = itemDateCR.value
         indexOfItem++
         modalCloserCR();
-    }
+        notifCrator(ItemtitleCR.value ,'changed');
+
 }
 
 
 function liDeleter(btn){
    numid = String(btn.id.match(/\d+/)) ;
    document.getElementById(`li${numid}`).remove();
+   notifCrator(Itemtitle.value ,'deleted');
+
 }
 
 function deleteFake(){
    document.getElementById(`li0`).remove();
+   notifCrator('im fake' ,'deleted');
 }
 
+let pn = document.createElement('p') ;
+
+function notifCrator( title  , act ) {
+    const n_box = document.getElementById('n_box')
+    pn.classList.add('notification_box-notif')
+    n_box.appendChild(pn)
+    pn.innerText = `${title} ${act}`
+    window.setTimeout(function (){
+        pn.remove()
+    },3000) 
+}
 
 
 //theme chenger
@@ -162,12 +153,15 @@ function toggler_mode(){
        modal.classList.add('modal_dark')
        modalBgCR.style.backgroundColor = '#131720'
        modalCR.classList.add('modal_dark')
+       pn.classList.add('notification_box-notif_dark')
    }else{
        document.body.style.backgroundColor = 'white' ;
        modalBg.style.backgroundColor = '#f5f5f5' ;
        modal.classList.remove('modal_dark');
        modalBgCR.style.backgroundColor = '#f5f5f5'
        modalCR.classList.remove('modal_dark')
+       pn.classList.remove('notification_box-notif_dark')
+
     }
 }
 
