@@ -8,6 +8,7 @@ body{
     align-items: center;
     font-family: serif;
     font-size:18px;
+    transition: background .3s ;
 }
 li{
     list-style:none;
@@ -203,7 +204,6 @@ header{
     color:red;
 }
 
-/* footer style*/
 
 
 
@@ -304,17 +304,50 @@ header{
   filter: invert(100%);
 
 }
+
+
+/*notification style  */
+
+.notification_box{
+  position: fixed;
+  bottom:20px;
+  right:10px;
+}
+.notification_box-notif{
+  margin:10px;
+  padding:1.6rem;
+  background:linear-gradient(to right,  rgb(64, 56, 177) , rgb(124, 46, 148) );
+  border-radius:10px;
+  color:white;
+}
+
+
+.notification_box-notif_dark{
+  background:linear-gradient(to right, hsl(210, 29%, 20%), hsl(255, 29%, 25%));
+}
+
+
 @media only screen and (max-width: 800px) {
+  .todoList{
+    height:40vh;
+  }
   .modal{
     width:100%;
     height:100%;
     border-radius:0;
+    padding:10px;
     justify-content:unset;
   }
   .modal--mainsec-content{
     display: flex;
     margin-top:150px;
-    margin-bottom:150px;
+    margin-bottom:100px;
+  }
+  .notification_box{
+    bottom:0;
+    left:0;
+    width:100%;
+    text-align: center;
   }
 }
 
