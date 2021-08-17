@@ -164,43 +164,54 @@ header{
 
   }
 .todoList--item{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   margin-bottom:50px;
   padding:10px 50px;
-
-}
-.todoList--item-title{
-    color:rgb(138, 79, 248);
-}
-.todoList--item-summary{
-    margin-left:10px;
-    color:rgb(90, 90, 90);
-    font-size:.9em;
 }
 
-.todoList--item--rightside{
+.todoList--item--header{
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  width:100%;
+  margin-bottom:10px !important;
+  padding: 0;
+}
+
+.todoList--item--header-title{
+    color:rgb(138, 79, 248);
+    margin-bottom:0 !important;
+}
+
+.todoList--item--header-date{
+  color:rgb(90, 90, 90);
+  margin-bottom:0 !important;
+
+}
+
+.todoList--item--content{
+  display: flex;
+  justify-content: space-between;
+}
+.todoList--item--content-summary{
+  color: rgb(90, 90, 90);
+
+}
+.todoList--item--content--btns{
+  display: flex;
   align-items: center;
 }
-.todoList--item--rightside-date{
-  margin-right:50px;
-  color:rgb(90, 90, 90);
 
-}
-.todoList--item-editbtn ,.todoList--item-deletebtn {
+.todoList--item--content--btns-editbtn ,.todoList--item--content--btns-deletebtn {
     display: block;
+    margin-left:7px;
     font-size:1em;
     cursor: pointer;  
     color: rgb(90, 90, 90);
 }
-.todoList--item-editbtn:hover{
+.todoList--item--content--btns-editbtn:hover{
     color:rgb(0, 87, 250)
 }
-.todoList--item-deletebtn:hover{
+.todoList--item--content--btns-deletebtn:hover{
     color:red;
 }
 
@@ -331,6 +342,11 @@ header{
   .todoList{
     height:40vh;
   }
+
+  .todoList--item--rightside-date{
+    margin-right:10px;
+    font-size:.7em;
+  }
   .modal{
     width:100%;
     height:100%;
@@ -349,5 +365,7 @@ header{
     width:100%;
     text-align: center;
   }
+
+
 }
 
