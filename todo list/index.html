@@ -23,12 +23,15 @@
      <ul class="todoList">
     <section id="itemsList">
         <li class="todoList--item" id="li0">
-            <section>  
-                <h3 class="todoList--item-title"  >im fake</h3>
-                <p class="todoList--item-summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            </section>
-            <section>
-                <button class=" todoList--item-deletebtn" onclick="deleteFake()"  ><i class=" fa fa-trash-o"   aria-hidden="true"></i></button>
+            <header class="todoList--item--header">  
+                <h3 class="todoList--item--header-title" >im fake</h3>
+                <div></div>
+            </header>
+            <section class="todoList--item--content" >             
+                <p class="todoList--item--content-summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                <article class="todoList--item--content--btns">   
+                    <button class=" todoList--item--content--btns-deletebtn" onclick="deleteFake()"  ><i class=" fa fa-trash-o"   aria-hidden="true"></i></button>
+                </article> 
             </section>
         </li>
 
