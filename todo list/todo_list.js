@@ -32,30 +32,32 @@ function saver(){
 
      function liCreator(title , content , date) {
         const li = document.createElement('li')
-        const section1 = document.createElement('section')
+        const header = document.createElement('header')
+        const section = document.createElement('section')
         const article = document.createElement('article')
-        const section2 = document.createElement('section')
         const h3 = document.createElement('h3');
+        const span = document.createElement('span')
         const p = document.createElement('p')
         const btn = document.createElement('button')
         const btnA = document.createElement('button')
         const i = document.createElement('i')
         const i2 = document.createElement('i')
-        const span = document.createElement('span')
         li.classList.add('todoList--item')
         li.id =`li${indexOfItem}`;
-        section1.id =`sec${indexOfItem}` 
-        article.classList.add('todoList--item--rightside')
-        article.id =`article${indexOfItem}` 
-        span.classList.add('todoList--item--rightside-date');
-        span.id =`span${indexOfItem}` 
-        section2.id =`sec2${indexOfItem}` 
-        h3.classList.add('todoList--item-title')
+        header.classList.add('todoList--item--header')
+        header.id =`head${indexOfItem}` 
+        h3.classList.add('todoList--item--header-title')
         h3.id = `h3${indexOfItem}` 
-        p.classList.add('todoList--item-summary')
+        span.classList.add('todoList--item--header-date');
+        span.id =`span${indexOfItem}` 
+        section.classList.add('todoList--item--content')
+        section.id =`sec${indexOfItem}` 
+        p.classList.add('todoList--item--content-summary')
         p.id = `p${indexOfItem}` 
-        btn.classList.add('todoList--item-editbtn')
-        btnA.classList.add('todoList--item-deletebtn')
+        article.classList.add('todoList--item--content--btns')
+        article.id=`article${indexOfItem}` 
+        btn.classList.add('todoList--item--content--btns-editbtn')
+        btnA.classList.add('todoList--item--content--btns-deletebtn')
         btn.id = `btn${indexOfItem}` 
         btn.setAttribute('onclick' , `liEditor(${btn.id})`)
         btnA.id = `btnA${indexOfItem}` 
@@ -66,14 +68,14 @@ function saver(){
         p.innerText = content ; 
         span.innerText = date ;
         document.querySelector('#itemsList').appendChild(li)
-        document.querySelector(`#li${indexOfItem}`).appendChild(section1)
-        document.querySelector(`#li${indexOfItem}`).appendChild(article)
-        document.querySelector(`#article${indexOfItem}`).appendChild(span)
-        document.querySelector(`#article${indexOfItem}`).appendChild(section2)
-        document.querySelector(`#sec${indexOfItem}`).appendChild(h3)
+        document.querySelector(`#li${indexOfItem}`).appendChild(header)
+        document.querySelector(`#head${indexOfItem}`).appendChild(h3)
+        document.querySelector(`#head${indexOfItem}`).appendChild(span)
+        document.querySelector(`#li${indexOfItem}`).appendChild(section)
         document.querySelector(`#sec${indexOfItem}`).appendChild(p)
-        document.querySelector(`#sec2${indexOfItem}`).appendChild(btn)
-        document.querySelector(`#sec2${indexOfItem}`).appendChild(btnA)
+        document.querySelector(`#sec${indexOfItem}`).appendChild(article)
+        document.querySelector(`#article${indexOfItem}`).appendChild(btn)
+        document.querySelector(`#article${indexOfItem}`).appendChild(btnA)
         document.querySelector(`#btn${indexOfItem}`).appendChild(i)
         document.querySelector(`#btnA${indexOfItem}`).appendChild(i2)
 
@@ -101,6 +103,7 @@ function liEditor(btn){
     ItemContentCR.value =  document.getElementById(`p${numid}`).innerText ;
     itemDateCR.value =  document.getElementById(`span${numid}`).innerText ;
     modalCreatorCR()
+
 }
 function saverCR(){
 
@@ -110,15 +113,17 @@ function saverCR(){
         document.getElementById(`span${numid}`).innerText = itemDateCR.value
         indexOfItem++
         modalCloserCR();
-        notifCrator(ItemtitleCR.value ,'changed');
+        notifCrator(document.getElementById(`h3${numid}`).innerText ,'changed');
+
 
 }
 
 
 function liDeleter(btn){
    numid = String(btn.id.match(/\d+/)) ;
+   notifCrator(document.getElementById(`h3${numid}`).innerText ,'deleted');
+
    document.getElementById(`li${numid}`).remove();
-   notifCrator(Itemtitle.value ,'deleted');
 
 }
 
